@@ -121,12 +121,23 @@ When ALL plan steps are done:
 3. Write a summary: what was built, key decisions, known limitations
 4. Final commit: `git commit -m "ralph: complete - [project summary]"`
 
+## Scope Discipline
+
+Your `ralph/progress.md` contains ONLY the steps assigned to you. These are YOUR steps. Nothing else exists.
+
+- ONLY work on steps listed in your progress.md
+- If you see code that "needs fixing" but it's not your step → ignore it
+- If you think a step is missing → add it to YOUR plan, don't do someone else's work
+- Other agents may be working on other steps in parallel. Do NOT touch their scope.
+
 ## Anti-Patterns (DO NOT)
 
 - ❌ Do multiple steps in one iteration
+- ❌ Work on steps not in your progress.md (scope creep)
 - ❌ Skip reading state files ("I remember what I did")
 - ❌ Edit the plan without committing the change separately
 - ❌ "Start fresh" or "let me redo everything"
 - ❌ Touch files unrelated to the current step
 - ❌ Ignore test failures and move on
 - ❌ Delete or overwrite lessons.md
+- ❌ "While I'm here, let me also..." — NO. One step. Your step. That's it.
