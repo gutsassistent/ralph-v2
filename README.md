@@ -28,9 +28,9 @@ bash /path/to/ralph-v2-template/scripts/init.sh "Description of what you're buil
 ### Then:
 1. Edit `ralph/spec.md` — define what you're building
 2. Open project in Emdash (or your orchestrator)
-3. First agent: `"Read ralph/spec.md, explore the codebase, create implementation plan in ralph/progress.md"`
+3. First agent (normal Emdash session): `"Read ralph/spec.md, explore the codebase, create implementation plan in ralph/progress.md"`
 4. Review the plan
-5. Spawn worker agents per task group
+5. Run `bash scripts/ralph.sh` in each worktree — the script spawns a fresh agent session per iteration (clean context)
 
 ## Directory Structure
 
@@ -58,11 +58,13 @@ CLAUDE.md            # Agent rules (Ralph v2 discipline)
 │ Agent        │  You review and approve
 └──────┬──────┘
        ▼
-┌─────────────┐
-│ Worker       │  Each in own worktree (via Emdash)
-│ Agents       │  Following Ralph v2 discipline
-│ (parallel)   │  One step per iteration
-└──────┬──────┘
+┌─────────────────────────────────────────┐
+│ Emdash (worktrees) + ralph.sh (loop)    │
+│                                         │
+│ Worktree A: ralph.sh → steps 1-4       │
+│ Worktree B: ralph.sh → steps 5-7       │
+│ Each iteration = fresh agent session    │
+└──────┬──────────────────────────────────┘
        ▼
 ┌─────────────┐
 │ You review   │  Diffs, progress, merge
